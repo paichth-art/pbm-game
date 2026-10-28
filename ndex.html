@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PBM - FPS</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101820;color:white;font-family:Arial,sans-serif;text-align:center}
+header{padding:18px;background:#182b3a;font-size:25px;font-weight:bold}
+main{padding:16px}
+#arena{height:300px;max-width:600px;margin:auto;background:linear-gradient(#6c8290 0 45%,#46534b 45% 70%,#30383e 70%);position:relative;overflow:hidden;border:3px solid #71808a}
+.building{position:absolute;background:#28333c;bottom:70px;width:100px;height:130px}
+.b1{left:12%}.b2{right:12%;height:170px}
+#target{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-size:55px}
+#cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:28px;color:#ff5252}
+button{padding:13px 18px;margin:5px;border:0;border-radius:8px;font-weight:bold;background:#e3eaf0;color:#14202a}
+#status{padding:12px}
+</style>
+</head>
+<body>
+<header>PBM : POINT BLANK MOBILE</header>
+<main>
+<p>ทีม BLUE — สนามฝึกซ้อม</p>
+<div id="arena">
+<div class="building b1"></div>
+<div class="building b2"></div>
+<div id="target">🪖</div>
+<div id="cross">＋</div>
+</div>
+<div id="status">กระสุน: <span id="ammo">30</span> | คะแนน: <span id="score">0</span></div>
+<button onclick="shoot()">ยิง</button>
+<button onclick="reload()">เติมกระสุน</button>
+<p id="message">แตะยิงเพื่อเริ่มฝึก</p>
+</main>
+<script>
+let ammo=30,score=0;
+function shoot(){
+ if(ammo<=0){document.getElementById('message').textContent='กระสุนหมด! กดเติมกระสุน';return}
+ ammo--;
+ score++;
+ document.getElementById('ammo').textContent=ammo;
+ document.getElementById('score').textContent=score;
+ document.getElementById('message').textContent='ยิงโดนเป้าฝึก!';
+}
+function reload(){
+ ammo=30;
+ document.getElementById('ammo').textContent=ammo;
+ document.getElementById('message').textContent='เติมกระสุนแล้ว';
+}
+</script>
+</body>
+</html>
